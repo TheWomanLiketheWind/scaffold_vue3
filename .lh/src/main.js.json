@@ -1,0 +1,50 @@
+{
+    "sourceFile": "src/main.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1687858497902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1687858554797,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import { createApp } from 'vue'\n import './style.css'\n import App from './App.vue'\n+import router from './router/index'\n \n // 5. 创建并挂载根实例\n const app = createApp(App)\n //确保 _use_ 路由实例使\n"
+                },
+                {
+                    "date": 1687917985977,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,14 @@\n import { createApp } from 'vue'\n import './style.css'\n import App from './App.vue'\n import router from './router/index'\n+import { createPinia } from 'pinia'\n \n-// 5. 创建并挂载根实例\n+// 创建并挂载根实例\n+\n+const pinia = createPinia()\n const app = createApp(App)\n-//确保 _use_ 路由实例使\n-//整个应用支持路由。\n+\n+app.use(pinia)\n app.use(router)\n-\n app.mount('#app')\n"
+                },
+                {
+                    "date": 1687931415313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,13 +2,13 @@\n import './style.css'\n import App from './App.vue'\n import router from './router/index'\n import { createPinia } from 'pinia'\n+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'\n \n-// 创建并挂载根实例\n-\n const pinia = createPinia()\n const app = createApp(App)\n \n+pinia.use(piniaPluginPersistedstate)\n app.use(pinia)\n app.use(router)\n app.mount('#app')\n"
+                },
+                {
+                    "date": 1687932741192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,11 +4,10 @@\n import router from './router/index'\n import { createPinia } from 'pinia'\n import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'\n \n+const app = createApp(App)\n const pinia = createPinia()\n-const app = createApp(App)\n-\n pinia.use(piniaPluginPersistedstate)\n app.use(pinia)\n app.use(router)\n app.mount('#app')\n"
+                },
+                {
+                    "date": 1687933040127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n import { createPinia } from 'pinia'\n import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'\n \n const app = createApp(App)\n+app.use(router)\n const pinia = createPinia()\n pinia.use(piniaPluginPersistedstate)\n app.use(pinia)\n-app.use(router)\n app.mount('#app')\n"
+                },
+                {
+                    "date": 1687933056904,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,12 @@\n import App from './App.vue'\n import router from './router/index'\n import { createPinia } from 'pinia'\n import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'\n+const pinia = createPinia()\n+pinia.use(piniaPluginPersistedstate)\n+app.use(pinia)\n \n const app = createApp(App)\n app.use(router)\n-const pinia = createPinia()\n-pinia.use(piniaPluginPersistedstate)\n-app.use(pinia)\n+\n app.mount('#app')\n"
+                },
+                {
+                    "date": 1687933609497,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,12 @@\n import App from './App.vue'\n import router from './router/index'\n import { createPinia } from 'pinia'\n import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'\n+\n+const app = createApp(App)\n const pinia = createPinia()\n pinia.use(piniaPluginPersistedstate)\n app.use(pinia)\n-\n-const app = createApp(App)\n app.use(router)\n \n app.mount('#app')\n"
+                },
+                {
+                    "date": 1687934219338,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,12 @@\n import { createApp } from 'vue'\n import './style.css'\n import App from './App.vue'\n import router from './router/index'\n-import { createPinia } from 'pinia'\n+import pinia from '@/stores/index'\n import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'\n \n const app = createApp(App)\n-const pinia = createPinia()\n pinia.use(piniaPluginPersistedstate)\n app.use(pinia)\n app.use(router)\n \n"
+                }
+            ],
+            "date": 1687858497902,
+            "name": "Commit-0",
+            "content": "import { createApp } from 'vue'\nimport './style.css'\nimport App from './App.vue'\n\n// 5. 创建并挂载根实例\nconst app = createApp(App)\n//确保 _use_ 路由实例使\n//整个应用支持路由。\napp.use(router)\n\napp.mount('#app')\n"
+        }
+    ]
+}

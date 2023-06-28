@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/view/home/title.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1687859144315,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1687859152194,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n <template>\r\n+    嵌套\r\n     <router-view></router-view>\r\n </template>\r\n \r\n <script>\r\n"
+                },
+                {
+                    "date": 1687859203197,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <template>\r\n-    嵌套\r\n+    嵌套路由\r\n     <router-view></router-view>\r\n </template>\r\n \r\n <script>\r\n"
+                },
+                {
+                    "date": 1687859215180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <template>\r\n-    嵌套路由\r\n+    父级嵌套路由\r\n     <router-view></router-view>\r\n </template>\r\n \r\n <script>\r\n"
+                }
+            ],
+            "date": 1687859144315,
+            "name": "Commit-0",
+            "content": "<template>\r\n    <router-view></router-view>\r\n</template>\r\n\r\n<script>\r\nexport default {}\r\n</script>\r\n\r\n<style></style>\r\n"
+        }
+    ]
+}

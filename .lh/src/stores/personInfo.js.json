@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/stores/personInfo.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1687933314435,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1687933666883,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,14 +4,15 @@\n export const usePersistStore = defineStore(\r\n     'counter',\r\n     () => {\r\n         const token = ref('')\r\n+        const count = ref(0)\r\n \r\n         function setToken(val) {\r\n             token.value = val\r\n         }\r\n \r\n-        return { token, setToken }\r\n+        return { token, count, setToken }\r\n     },\r\n     {\r\n         persist: true\r\n     }\r\n"
+                },
+                {
+                    "date": 1687933696012,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,12 @@\n         function setToken(val) {\r\n             token.value = val\r\n         }\r\n \r\n+        function increment() {\r\n+            count.value++\r\n+        }\r\n+\r\n         return { token, count, setToken }\r\n     },\r\n     {\r\n         persist: true\r\n"
+                },
+                {
+                    "date": 1687933727836,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         function increment() {\r\n             count.value++\r\n         }\r\n \r\n-        return { token, count, setToken }\r\n+        return { token, count, setToken, increment }\r\n     },\r\n     {\r\n         persist: true\r\n     }\r\n"
+                },
+                {
+                    "date": 1687935983667,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,7 +17,7 @@\n \r\n         return { token, count, setToken, increment }\r\n     },\r\n     {\r\n-        persist: true\r\n+        persist: sessionStorage\r\n     }\r\n )\r\n"
+                }
+            ],
+            "date": 1687933314435,
+            "name": "Commit-0",
+            "content": "import { defineStore } from 'pinia'\r\nimport { ref } from 'vue'\r\n\r\nexport const usePersistStore = defineStore(\r\n    'counter',\r\n    () => {\r\n        const token = ref('')\r\n\r\n        function setToken(val) {\r\n            token.value = val\r\n        }\r\n\r\n        return { token, setToken }\r\n    },\r\n    {\r\n        persist: true\r\n    }\r\n)\r\n"
+        }
+    ]
+}

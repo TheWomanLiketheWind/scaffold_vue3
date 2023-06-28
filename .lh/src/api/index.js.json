@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/api/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1687861152531,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1687861215848,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,12 @@\n service.interceptors.request.use((config) => {\r\n     if (config.isLoading) {\r\n         showLoading()\r\n     }\r\n-    config.headers.Authorization = sessionStorage.getItem('AI_TOKEN') || null\r\n+    config.headers.Authorization = localStorage.getItem('AI_TOKEN') || null\r\n     return config\r\n })\r\n+\r\n service.interceptors.response.use(\r\n     (res) => {\r\n         if (loadingStatus) {\r\n             hideLoading()\r\n"
+                },
+                {
+                    "date": 1687861234521,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import axios from 'axios'\r\n+import { ElMessage, ElLoading } from 'element-plus'\r\n \r\n const service = axios.create({\r\n     baseURL: import.meta.env.VITE_BASE_API,\r\n     timeout: 50000\r\n"
+                },
+                {
+                    "date": 1687861315553,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,20 +6,14 @@\n     timeout: 50000\r\n })\r\n \r\n service.interceptors.request.use((config) => {\r\n-    if (config.isLoading) {\r\n-        showLoading()\r\n-    }\r\n     config.headers.Authorization = localStorage.getItem('AI_TOKEN') || null\r\n     return config\r\n })\r\n \r\n service.interceptors.response.use(\r\n     (res) => {\r\n-        if (loadingStatus) {\r\n-            hideLoading()\r\n-        }\r\n         if (res.data.success) {\r\n             return Promise.resolve(res.data.model)\r\n         } else {\r\n             ElMessage.error({\r\n@@ -28,11 +22,8 @@\n             return Promise.reject(res.data)\r\n         }\r\n     },\r\n     (error) => {\r\n-        if (loadingStatus) {\r\n-            hideLoading()\r\n-        }\r\n         if (error.response.data.status == 401) {\r\n             sessionStorage.clear()\r\n             localStorage.clear()\r\n             router.replace('/login')\r\n"
+                },
+                {
+                    "date": 1687861330626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,8 @@\n         }\r\n     },\r\n     (error) => {\r\n         if (error.response.data.status == 401) {\r\n-            sessionStorage.clear()\r\n             localStorage.clear()\r\n             router.replace('/login')\r\n         } else {\r\n             // 除 401外, 其他错误信息需提示\r\n"
+                }
+            ],
+            "date": 1687861152531,
+            "name": "Commit-0",
+            "content": "import axios from 'axios'\r\n\r\nconst service = axios.create({\r\n    baseURL: import.meta.env.VITE_BASE_API,\r\n    timeout: 50000\r\n})\r\n\r\nservice.interceptors.request.use((config) => {\r\n    if (config.isLoading) {\r\n        showLoading()\r\n    }\r\n    config.headers.Authorization = sessionStorage.getItem('AI_TOKEN') || null\r\n    return config\r\n})\r\nservice.interceptors.response.use(\r\n    (res) => {\r\n        if (loadingStatus) {\r\n            hideLoading()\r\n        }\r\n        if (res.data.success) {\r\n            return Promise.resolve(res.data.model)\r\n        } else {\r\n            ElMessage.error({\r\n                message: res.data.errorMessage || 'Error'\r\n            })\r\n            return Promise.reject(res.data)\r\n        }\r\n    },\r\n    (error) => {\r\n        if (loadingStatus) {\r\n            hideLoading()\r\n        }\r\n        if (error.response.data.status == 401) {\r\n            sessionStorage.clear()\r\n            localStorage.clear()\r\n            router.replace('/login')\r\n        } else {\r\n            // 除 401外, 其他错误信息需提示\r\n            ElMessage.error({\r\n                message: error\r\n            })\r\n        }\r\n\r\n        return Promise.reject(error)\r\n    }\r\n)\r\n\r\nexport default service\r\n"
+        }
+    ]
+}

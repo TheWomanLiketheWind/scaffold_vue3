@@ -1,0 +1,194 @@
+{
+    "sourceFile": "src/view/Home/index.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 44,
+            "patches": [
+                {
+                    "date": 1687857961316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1687859224249,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,9 @@\n <template>\r\n-  <div>\r\n-\r\n-    </div>\r\n+    <div>子级路由</div>\r\n </template>\r\n \r\n <script>\r\n-export default {\r\n-\r\n-}\r\n+export default {}\r\n </script>\r\n \r\n-<style>\r\n\\ No newline at end of file\n-\r\n-</style>\n+<style></style>\r\n"
+                },
+                {
+                    "date": 1687861454416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <template>\r\n     <div>子级路由</div>\r\n </template>\r\n \r\n-<script>\r\n-export default {}\r\n+<script setup>\r\n+import { login } from '@/api/login/index'\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687861536872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,7 +3,13 @@\n </template>\r\n \r\n <script setup>\r\n import { login } from '@/api/login/index'\r\n+\r\n+const submit_login = async () => {\r\n+    const params = {}\r\n+    const res = await login(params)\r\n+    console.log('返回值', res)\r\n+}\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687861547042,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n \r\n <script setup>\r\n import { login } from '@/api/login/index'\r\n \r\n+// 接口演示\r\n const submit_login = async () => {\r\n     const params = {}\r\n     const res = await login(params)\r\n     console.log('返回值', res)\r\n"
+                },
+                {
+                    "date": 1687861554493,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n <script setup>\r\n import { login } from '@/api/login/index'\r\n \r\n-// 接口演示\r\n+// 调用 login 接口演示\r\n const submit_login = async () => {\r\n     const params = {}\r\n     const res = await login(params)\r\n     console.log('返回值', res)\r\n"
+                },
+                {
+                    "date": 1687918156818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,14 +3,18 @@\n </template>\r\n \r\n <script setup>\r\n import { login } from '@/api/login/index'\r\n+import { useCounterStore } from '@/stores/counter'\r\n \r\n // 调用 login 接口演示\r\n const submit_login = async () => {\r\n     const params = {}\r\n     const res = await login(params)\r\n     console.log('返回值', res)\r\n }\r\n+\r\n+// pinia 演示\r\n+const store = useCounterStore()\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687918299801,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n </template>\r\n \r\n <script setup>\r\n import { login } from '@/api/login/index'\r\n-import { useCounterStore } from '@/stores/counter'\r\n+import { useCounterStore } from '@/stores/index'\r\n \r\n // 调用 login 接口演示\r\n const submit_login = async () => {\r\n     const params = {}\r\n@@ -14,7 +14,11 @@\n }\r\n \r\n // pinia 演示\r\n const store = useCounterStore()\r\n+// 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n+const { name, doubleCount } = storeToRefs(store)\r\n+// 作为 action 的 increment 可以直接解构\r\n+const { increment } = store\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687918328641,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,20 +5,19 @@\n <script setup>\r\n import { login } from '@/api/login/index'\r\n import { useCounterStore } from '@/stores/index'\r\n \r\n-// 调用 login 接口演示\r\n+// ----------------调用 login 接口演示----------------------\r\n const submit_login = async () => {\r\n     const params = {}\r\n     const res = await login(params)\r\n     console.log('返回值', res)\r\n }\r\n \r\n-// pinia 演示\r\n+// ----------------pinia 演示----------------------\r\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { name, doubleCount } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n-const { increment } = store\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687918348173,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     const res = await login(params)\r\n     console.log('返回值', res)\r\n }\r\n \r\n-// ----------------pinia 演示----------------------\r\n+// ----------------pinia 演示------------------------------\r\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { name, doubleCount } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n"
+                },
+                {
+                    "date": 1687918417138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,12 +12,12 @@\n     const res = await login(params)\r\n     console.log('返回值', res)\r\n }\r\n \r\n-// ----------------pinia 演示------------------------------\r\n+// ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n-const { name, doubleCount } = storeToRefs(store)\r\n+const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687918427777,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,7 +17,8 @@\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n+console.log(count)\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687918575998,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,7 +18,11 @@\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n console.log(count)\r\n+store.$patch((state) => {\r\n+    state.items.push({ name: 'shoes', quantity: 1 })\r\n+    state.hasChanged = true\r\n+})\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687918618956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,10 +19,9 @@\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n console.log(count)\r\n store.$patch((state) => {\r\n-    state.items.push({ name: 'shoes', quantity: 1 })\r\n-    state.hasChanged = true\r\n+    state.increment()\r\n })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687918647506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,11 +15,13 @@\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n-const { count, increment } = storeToRefs(store)\r\n+const { increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n-console.log(count)\r\n+setTimeout(() => {\r\n+    increment()\r\n+}, 2000)\r\n store.$patch((state) => {\r\n     state.increment()\r\n })\r\n </script>\r\n"
+                },
+                {
+                    "date": 1687918655647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,13 +17,13 @@\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n-setTimeout(() => {\r\n+setInterval(() => {\r\n     increment()\r\n }, 2000)\r\n-store.$patch((state) => {\r\n-    state.increment()\r\n-})\r\n+// store.$patch((state) => {\r\n+//     state.increment()\r\n+// })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687929674536,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,10 @@\n </template>\r\n \r\n <script setup>\r\n import { login } from '@/api/login/index'\r\n+import { storeToRefs } from 'pinia'\r\n+\r\n import { useCounterStore } from '@/stores/index'\r\n \r\n // ----------------调用 login 接口演示----------------------\r\n const submit_login = async () => {\r\n"
+                },
+                {
+                    "date": 1687929750865,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,11 @@\n <template>\r\n-    <div>子级路由</div>\r\n+    <div>子级路由 {{ count }}</div>\r\n </template>\r\n \r\n <script setup>\r\n import { login } from '@/api/login/index'\r\n import { storeToRefs } from 'pinia'\r\n-\r\n import { useCounterStore } from '@/stores/index'\r\n \r\n // ----------------调用 login 接口演示----------------------\r\n const submit_login = async () => {\r\n@@ -17,9 +16,9 @@\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n-const { increment } = storeToRefs(store)\r\n+const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n setInterval(() => {\r\n     increment()\r\n }, 2000)\r\n"
+                },
+                {
+                    "date": 1687929790046,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,13 +18,13 @@\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n-setInterval(() => {\r\n-    increment()\r\n-}, 2000)\r\n-// store.$patch((state) => {\r\n-//     state.increment()\r\n-// })\r\n+// setInterval(() => {\r\n+//     increment()\r\n+// }, 2000)\r\n+store.$patch((state) => {\r\n+    state.increment()\r\n+})\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687929811271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,9 @@\n // setInterval(() => {\r\n //     increment()\r\n // }, 2000)\r\n store.$patch((state) => {\r\n+    state.count++\r\n     state.increment()\r\n })\r\n </script>\r\n \r\n"
+                },
+                {
+                    "date": 1687930093135,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,11 +21,12 @@\n // 作为 action 的 increment 可以直接解构\r\n // setInterval(() => {\r\n //     increment()\r\n // }, 2000)\r\n+store.increment()\r\n store.$patch((state) => {\r\n     state.count++\r\n-    state.increment()\r\n+    // state.increment()\r\n })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930207345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,15 +18,13 @@\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n-// setInterval(() => {\r\n-//     increment()\r\n-// }, 2000)\r\n-store.increment()\r\n-store.$patch((state) => {\r\n-    state.count++\r\n-    // state.increment()\r\n-})\r\n+\r\n+increment\r\n+// store.$patch((state) => {\r\n+//     state.count++\r\n+//     // state.increment()\r\n+// })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930216374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n \r\n-increment\r\n+increment()\r\n // store.$patch((state) => {\r\n //     state.count++\r\n //     // state.increment()\r\n // })\r\n"
+                },
+                {
+                    "date": 1687930330905,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n \r\n-increment()\r\n+console.log(increment)\r\n // store.$patch((state) => {\r\n //     state.count++\r\n //     // state.increment()\r\n // })\r\n"
+                },
+                {
+                    "date": 1687930339407,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n \r\n-console.log(increment)\r\n+console.log(count)\r\n // store.$patch((state) => {\r\n //     state.count++\r\n //     // state.increment()\r\n // })\r\n"
+                },
+                {
+                    "date": 1687930351092,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n \r\n-console.log(count)\r\n+console.log(count.value)\r\n // store.$patch((state) => {\r\n //     state.count++\r\n //     // state.increment()\r\n // })\r\n"
+                },
+                {
+                    "date": 1687930544751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,11 +20,11 @@\n const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n \r\n console.log(count.value)\r\n-// store.$patch((state) => {\r\n-//     state.count++\r\n-//     // state.increment()\r\n-// })\r\n+store.$patch((state) => {\r\n+    state.count++\r\n+    state.increment()\r\n+})\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930566689,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,10 +21,10 @@\n // 作为 action 的 increment 可以直接解构\r\n \r\n console.log(count.value)\r\n store.$patch((state) => {\r\n-    state.count++\r\n-    state.increment()\r\n+    state.count++ // 对 state 进行直接操作\r\n+    state.increment() // 调用 action\r\n })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930589612,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \r\n console.log(count.value)\r\n store.$patch((state) => {\r\n     state.count++ // 对 state 进行直接操作\r\n-    state.increment() // 调用 action\r\n+    state.increment() // 操作action， 调用increment方法\r\n })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930629699,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,15 +16,17 @@\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n-const { count, increment } = storeToRefs(store)\r\n+// const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n+// 第一种方法\r\n+console.log(store。count)\r\n \r\n-console.log(count.value)\r\n+// 第二种方法\r\n store.$patch((state) => {\r\n     state.count++ // 对 state 进行直接操作\r\n-    state.increment() // 操作action， 调用increment方法\r\n+    state.increment() // 操作action， 调用 increment 方法\r\n })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930642901,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,13 +19,13 @@\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n // const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n // 第一种方法\r\n-console.log(store。count)\r\n+console.log(store.count)\r\n \r\n // 第二种方法\r\n store.$patch((state) => {\r\n-    state.count++ // 对 state 进行直接操作\r\n+    // state.count++ // 对 state 进行直接操作\r\n     state.increment() // 操作action， 调用 increment 方法\r\n })\r\n </script>\r\n \r\n"
+                },
+                {
+                    "date": 1687930663080,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,14 +19,15 @@\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n // const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n // 第一种方法\r\n-console.log(store.count)\r\n+// console.log(store.count)\r\n \r\n // 第二种方法\r\n store.$patch((state) => {\r\n+    console.log(state)\r\n     // state.count++ // 对 state 进行直接操作\r\n-    state.increment() // 操作action， 调用 increment 方法\r\n+    // state.increment() // 操作action， 调用 increment 方法\r\n })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930692808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,14 +20,14 @@\n // const { count, increment } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n // 第一种方法\r\n // console.log(store.count)\r\n-\r\n+store.increment()\r\n // 第二种方法\r\n-store.$patch((state) => {\r\n-    console.log(state)\r\n-    // state.count++ // 对 state 进行直接操作\r\n-    // state.increment() // 操作action， 调用 increment 方法\r\n-})\r\n+// store.$patch((state) => {\r\n+//     console.log(state)\r\n+//     // state.count++ // 对 state 进行直接操作\r\n+//     // state.increment() // 操作action， 调用 increment 方法\r\n+// })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930736793,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,18 +16,16 @@\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n-// const { count, increment } = storeToRefs(store)\r\n+const { count } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n // 第一种方法\r\n-// console.log(store.count)\r\n store.increment()\r\n // 第二种方法\r\n-// store.$patch((state) => {\r\n-//     console.log(state)\r\n-//     // state.count++ // 对 state 进行直接操作\r\n-//     // state.increment() // 操作action， 调用 increment 方法\r\n-// })\r\n+store.$patch((state) => {\r\n+    console.log(state)\r\n+    state.count++ // 对 state 进行直接操作\r\n+})\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930752759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,12 +20,12 @@\n const { count } = storeToRefs(store)\r\n // 作为 action 的 increment 可以直接解构\r\n // 第一种方法\r\n store.increment()\r\n+count++\r\n // 第二种方法\r\n-store.$patch((state) => {\r\n-    console.log(state)\r\n-    state.count++ // 对 state 进行直接操作\r\n-})\r\n+// store.$patch((state) => {\r\n+//     state.count++ // 对 state 进行直接操作\r\n+// })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687930798355,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,13 +16,14 @@\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n-const { count } = storeToRefs(store)\r\n+// const { count } = storeToRefs(store)\r\n+const { increment } = store\r\n+increment()\r\n // 作为 action 的 increment 可以直接解构\r\n // 第一种方法\r\n-store.increment()\r\n-count++\r\n+// store.increment()\r\n // 第二种方法\r\n // store.$patch((state) => {\r\n //     state.count++ // 对 state 进行直接操作\r\n // })\r\n"
+                },
+                {
+                    "date": 1687930809209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n // 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n-// const { count } = storeToRefs(store)\r\n+const { count } = storeToRefs(store)\r\n const { increment } = store\r\n increment()\r\n // 作为 action 的 increment 可以直接解构\r\n // 第一种方法\r\n"
+                },
+                {
+                    "date": 1687931009124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,12 +15,14 @@\n }\r\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n-// 为了从 store 中提取属性时保持其响应性，你需要使用 storeToRefs(), 实现解构\r\n-const { count } = storeToRefs(store)\r\n-const { increment } = store\r\n-increment()\r\n+console.log(store)\r\n+// 只使用 store 的状态而不调用任何 action 时，使用 storeToRefs(), 实现解构\r\n+// const { count } = storeToRefs(store)\r\n+// // 只使用 store 的状态而不调用任何 action 时\r\n+// const { increment } = store\r\n+// increment()\r\n // 作为 action 的 increment 可以直接解构\r\n // 第一种方法\r\n // store.increment()\r\n // 第二种方法\r\n"
+                },
+                {
+                    "date": 1687931037205,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n }\r\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n-console.log(store)\r\n+console.log(store.count)\r\n // 只使用 store 的状态而不调用任何 action 时，使用 storeToRefs(), 实现解构\r\n // const { count } = storeToRefs(store)\r\n // // 只使用 store 的状态而不调用任何 action 时\r\n // const { increment } = store\r\n"
+                },
+                {
+                    "date": 1687931117340,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,11 +15,12 @@\n }\r\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n-console.log(store.count)\r\n // 只使用 store 的状态而不调用任何 action 时，使用 storeToRefs(), 实现解构\r\n-// const { count } = storeToRefs(store)\r\n+const { count } = storeToRefs(store) // 响应式（第一种）\r\n+console.log(store.count) // 直接访问（第二种）\r\n+\r\n // // 只使用 store 的状态而不调用任何 action 时\r\n // const { increment } = store\r\n // increment()\r\n // 作为 action 的 increment 可以直接解构\r\n"
+                },
+                {
+                    "date": 1687931200770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,15 +15,19 @@\n }\r\n \r\n // ----------------pinia 演示-------------------------------\r\n const store = useCounterStore()\r\n+// ----------------操作state-------------------\r\n // 只使用 store 的状态而不调用任何 action 时，使用 storeToRefs(), 实现解构\r\n const { count } = storeToRefs(store) // 响应式（第一种）\r\n console.log(store.count) // 直接访问（第二种）\r\n-\r\n-// // 只使用 store 的状态而不调用任何 action 时\r\n-// const { increment } = store\r\n-// increment()\r\n+store.$patch((state) => {\r\n+    state.count++ // 对 state 进行直接操作 （第三种）\r\n+})\r\n+// ----------------操作action-------------------\r\n+// 只使用 store 的状态而不调用任何 action 时\r\n+const { increment } = store\r\n+increment()\r\n // 作为 action 的 increment 可以直接解构\r\n // 第一种方法\r\n // store.increment()\r\n // 第二种方法\r\n"
+                },
+                {
+                    "date": 1687931228333,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,14 +26,7 @@\n // ----------------操作action-------------------\r\n // 只使用 store 的状态而不调用任何 action 时\r\n const { increment } = store\r\n increment()\r\n-// 作为 action 的 increment 可以直接解构\r\n-// 第一种方法\r\n-// store.increment()\r\n-// 第二种方法\r\n-// store.$patch((state) => {\r\n-//     state.count++ // 对 state 进行直接操作\r\n-// })\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687931246209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n store.$patch((state) => {\r\n     state.count++ // 对 state 进行直接操作 （第三种）\r\n })\r\n // ----------------操作action-------------------\r\n-// 只使用 store 的状态而不调用任何 action 时\r\n+// 作为 action 的 increment 可以直接解构\r\n const { increment } = store\r\n increment()\r\n </script>\r\n \r\n"
+                },
+                {
+                    "date": 1687933700106,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n <script setup>\r\n import { login } from '@/api/login/index'\r\n import { storeToRefs } from 'pinia'\r\n-import { useCounterStore } from '@/stores/index'\r\n+import { usePersistStore } from '@/stores/index'\r\n \r\n // ----------------调用 login 接口演示----------------------\r\n const submit_login = async () => {\r\n     const params = {}\r\n@@ -14,9 +14,9 @@\n     console.log('返回值', res)\r\n }\r\n \r\n // ----------------pinia 演示-------------------------------\r\n-const store = useCounterStore()\r\n+const store = usePersistStore()\r\n // ----------------操作state-------------------\r\n // 只使用 store 的状态而不调用任何 action 时，使用 storeToRefs(), 实现解构\r\n const { count } = storeToRefs(store) // 响应式（第一种）\r\n console.log(store.count) // 直接访问（第二种）\r\n"
+                },
+                {
+                    "date": 1687933716174,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n <script setup>\r\n import { login } from '@/api/login/index'\r\n import { storeToRefs } from 'pinia'\r\n-import { usePersistStore } from '@/stores/index'\r\n+import { usePersistStore } from '@/stores/personInfo'\r\n \r\n // ----------------调用 login 接口演示----------------------\r\n const submit_login = async () => {\r\n     const params = {}\r\n"
+                }
+            ],
+            "date": 1687857961316,
+            "name": "Commit-0",
+            "content": "<template>\r\n  <div>\r\n\r\n    </div>\r\n</template>\r\n\r\n<script>\r\nexport default {\r\n\r\n}\r\n</script>\r\n\r\n<style>\r\n\r\n</style>"
+        }
+    ]
+}

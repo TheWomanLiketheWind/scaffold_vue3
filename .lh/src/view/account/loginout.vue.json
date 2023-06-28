@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/view/account/loginout.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1687934884983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1687934884983,
+            "name": "Commit-0",
+            "content": "<template>\r\n    <div>退出登录</div>\r\n</template>\r\n\r\n<script>\r\nimport { usePersistStore } from '@/stores/personInfo.js'\r\nconst storePersist = usePersistStore()\r\nstorePersist.setToken('')\r\n// 用于vue-router 中使用token\r\nsessionStorage.clear()\r\n</script>\r\n\r\n<style></style>\r\n"
+        }
+    ]
+}

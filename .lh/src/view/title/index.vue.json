@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/view/title/index.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1687859561073,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1687859561073,
+            "name": "Commit-0",
+            "content": "<template>\r\n    父级路由\r\n    <router-view></router-view>\r\n</template>\r\n\r\n<script>\r\nexport default {}\r\n</script>\r\n\r\n<style></style>\r\n"
+        }
+    ]
+}

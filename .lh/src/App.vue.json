@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/App.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1687859182695,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1687859192893,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,6 @@\n <template>\n-    <div>\n-        <a href=\"https://vitejs.dev\" target=\"_blank\">\n-            <img src=\"/vite.svg\" class=\"logo\" alt=\"Vite logo\" />\n-        </a>\n-        <a href=\"https://vuejs.org/\" target=\"_blank\">\n-            <img src=\"./assets/vue.svg\" class=\"logo vue\" alt=\"Vue logo\" />\n-        </a>\n-    </div>\n-    <HelloWorld msg=\"Vite + Vue\" />\n+    <router-view></router-view>\n </template>\n \n <script setup>\n import HelloWorld from './components/HelloWorld.vue'\n"
+                },
+                {
+                    "date": 1687859348880,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,7 @@\n <template>\n     <router-view></router-view>\n </template>\n \n-<script setup>\n-import HelloWorld from './components/HelloWorld.vue'\n-</script>\n+<script setup></script>\n \n-<style scoped>\n-.logo {\n-    height: 6em;\n-    padding: 1.5em;\n-    will-change: filter;\n-    transition: filter 300ms;\n-}\n-.logo:hover {\n-    filter: drop-shadow(0 0 2em #646cffaa);\n-}\n-.logo.vue:hover {\n-    filter: drop-shadow(0 0 2em #42b883aa);\n-}\n-</style>\n+<style scoped></style>\n"
+                }
+            ],
+            "date": 1687859182695,
+            "name": "Commit-0",
+            "content": "<template>\n    <div>\n        <a href=\"https://vitejs.dev\" target=\"_blank\">\n            <img src=\"/vite.svg\" class=\"logo\" alt=\"Vite logo\" />\n        </a>\n        <a href=\"https://vuejs.org/\" target=\"_blank\">\n            <img src=\"./assets/vue.svg\" class=\"logo vue\" alt=\"Vue logo\" />\n        </a>\n    </div>\n    <HelloWorld msg=\"Vite + Vue\" />\n</template>\n\n<script setup>\nimport HelloWorld from './components/HelloWorld.vue'\n</script>\n\n<style scoped>\n.logo {\n    height: 6em;\n    padding: 1.5em;\n    will-change: filter;\n    transition: filter 300ms;\n}\n.logo:hover {\n    filter: drop-shadow(0 0 2em #646cffaa);\n}\n.logo.vue:hover {\n    filter: drop-shadow(0 0 2em #42b883aa);\n}\n</style>\n"
+        }
+    ]
+}

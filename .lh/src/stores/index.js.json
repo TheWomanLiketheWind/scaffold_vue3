@@ -1,0 +1,58 @@
+{
+    "sourceFile": "src/stores/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1687918726154,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1687920326699,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import { defineStore } from 'pinia'\r\n+import { ref } from 'vue'\r\n \r\n export const useCounterStore = defineStore('counter', () => {\r\n     const count = ref(0)\r\n     function increment() {\r\n@@ -17,18 +18,18 @@\n \r\n     return { count, increment }\r\n })\r\n \r\n-export default defineComponent({\r\n-    computed: {\r\n-        // 其他计算属性\r\n-        // ...\r\n-        // 允许访问 this.counterStore 和 this.userStore\r\n-        ...mapStores(useCounterStore, useUserStore),\r\n-        // 允许读取 this.count 和 this.double\r\n-        ...mapState(useCounterStore, ['count', 'double'])\r\n-    },\r\n-    methods: {\r\n-        // 允许读取 this.increment()\r\n-        ...mapActions(useCounterStore, ['increment'])\r\n-    }\r\n-})\r\n+// export default defineComponent({\r\n+//     computed: {\r\n+//         // 其他计算属性\r\n+//         // ...\r\n+//         // 允许访问 this.counterStore 和 this.userStore\r\n+//         ...mapStores(useCounterStore, useUserStore),\r\n+//         // 允许读取 this.count 和 this.double\r\n+//         ...mapState(useCounterStore, ['count', 'double'])\r\n+//     },\r\n+//     methods: {\r\n+//         // 允许读取 this.increment()\r\n+//         ...mapActions(useCounterStore, ['increment'])\r\n+//     }\r\n+// })\r\n"
+                },
+                {
+                    "date": 1687920337780,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import { defineStore } from 'pinia'\r\n+import { defineStore, storeToRefs } from 'pinia'\r\n import { ref } from 'vue'\r\n \r\n export const useCounterStore = defineStore('counter', () => {\r\n     const count = ref(0)\r\n"
+                },
+                {
+                    "date": 1687929655029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import { defineStore, storeToRefs } from 'pinia'\r\n+import { defineStore } from 'pinia'\r\n import { ref } from 'vue'\r\n \r\n export const useCounterStore = defineStore('counter', () => {\r\n     const count = ref(0)\r\n"
+                },
+                {
+                    "date": 1687930491030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,19 +17,4 @@\n     }\r\n \r\n     return { count, increment }\r\n })\r\n-\r\n-// export default defineComponent({\r\n-//     computed: {\r\n-//         // 其他计算属性\r\n-//         // ...\r\n-//         // 允许访问 this.counterStore 和 this.userStore\r\n-//         ...mapStores(useCounterStore, useUserStore),\r\n-//         // 允许读取 this.count 和 this.double\r\n-//         ...mapState(useCounterStore, ['count', 'double'])\r\n-//     },\r\n-//     methods: {\r\n-//         // 允许读取 this.increment()\r\n-//         ...mapActions(useCounterStore, ['increment'])\r\n-//     }\r\n-// })\r\n"
+                },
+                {
+                    "date": 1687931444483,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,17 @@\n import { defineStore } from 'pinia'\r\n import { ref } from 'vue'\r\n \r\n-export const useCounterStore = defineStore('counter', () => {\r\n-    const count = ref(0)\r\n-    function increment() {\r\n-        count.value++\r\n-    }\r\n+export const useCounterStore = defineStore(\r\n+    'counter',\r\n+    () => {\r\n+        const count = ref(0)\r\n+        function increment() {\r\n+            count.value++\r\n+        }\r\n \r\n-    return { count, increment }\r\n-})\r\n-\r\n-export const useCounterStore1 = defineStore('counter', () => {\r\n-    const count = ref(0)\r\n-    function increment() {\r\n-        count.value++\r\n+        return { count, increment }\r\n+    },\r\n+    {\r\n+        persist: true\r\n     }\r\n-\r\n-    return { count, increment }\r\n-})\r\n+)\r\n"
+                },
+                {
+                    "date": 1687932517082,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,10 @@\n \r\n export const useCounterStore = defineStore(\r\n     'counter',\r\n     () => {\r\n-        const count = ref(0)\r\n+        const token = ref('')\r\n+\r\n         function increment() {\r\n             count.value++\r\n         }\r\n \r\n"
+                },
+                {
+                    "date": 1687932551278,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,10 @@\n     'counter',\r\n     () => {\r\n         const token = ref('')\r\n \r\n-        function increment() {\r\n-            count.value++\r\n+        function increment(val) {\r\n+            token.value = val\r\n         }\r\n \r\n         return { count, increment }\r\n     },\r\n"
+                },
+                {
+                    "date": 1687932567712,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,13 +5,13 @@\n     'counter',\r\n     () => {\r\n         const token = ref('')\r\n \r\n-        function increment(val) {\r\n+        function setToken(val) {\r\n             token.value = val\r\n         }\r\n \r\n-        return { count, increment }\r\n+        return { token, setToken }\r\n     },\r\n     {\r\n         persist: true\r\n     }\r\n"
+                },
+                {
+                    "date": 1687932672634,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { defineStore } from 'pinia'\r\n import { ref } from 'vue'\r\n \r\n-export const useCounterStore = defineStore(\r\n+export const usePersistStore = defineStore(\r\n     'counter',\r\n     () => {\r\n         const token = ref('')\r\n \r\n"
+                },
+                {
+                    "date": 1687933312244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,3 @@\n-import { defineStore } from 'pinia'\r\n-import { ref } from 'vue'\r\n-\r\n-export const usePersistStore = defineStore(\r\n-    'counter',\r\n-    () => {\r\n-        const token = ref('')\r\n-\r\n-        function setToken(val) {\r\n-            token.value = val\r\n-        }\r\n-\r\n-        return { token, setToken }\r\n-    },\r\n-    {\r\n-        persist: true\r\n-    }\r\n-)\r\n+import { createPinia } from 'pinia'\r\n+const pinia = createPinia()\r\n+export default pinia\r\n"
+                }
+            ],
+            "date": 1687918726154,
+            "name": "Commit-0",
+            "content": "import { defineStore } from 'pinia'\r\n\r\nexport const useCounterStore = defineStore('counter', () => {\r\n    const count = ref(0)\r\n    function increment() {\r\n        count.value++\r\n    }\r\n\r\n    return { count, increment }\r\n})\r\n\r\nexport const useCounterStore1 = defineStore('counter', () => {\r\n    const count = ref(0)\r\n    function increment() {\r\n        count.value++\r\n    }\r\n\r\n    return { count, increment }\r\n})\r\n\r\nexport default defineComponent({\r\n    computed: {\r\n        // 其他计算属性\r\n        // ...\r\n        // 允许访问 this.counterStore 和 this.userStore\r\n        ...mapStores(useCounterStore, useUserStore),\r\n        // 允许读取 this.count 和 this.double\r\n        ...mapState(useCounterStore, ['count', 'double'])\r\n    },\r\n    methods: {\r\n        // 允许读取 this.increment()\r\n        ...mapActions(useCounterStore, ['increment'])\r\n    }\r\n})\r\n"
+        }
+    ]
+}

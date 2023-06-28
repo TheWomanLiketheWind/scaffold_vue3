@@ -1,0 +1,226 @@
+{
+    "sourceFile": "src/router/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 52,
+            "patches": [
+                {
+                    "date": 1687857457646,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1687857652092,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n-const Home = { template: '<div>Home</div>' }\r\n-const About = { template: '<div>About</div>' }\r\n+const Home = import('../view/home/index.vue')\r\n+const About =import('../view/home/about.vue')\r\n \r\n // 2. 定义一些路由\r\n // 每个路由都需要映射到一个组件。\r\n // 我们后面再讨论嵌套路由。\r\n"
+                },
+                {
+                    "date": 1687857766893,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,15 @@\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = import('../view/home/index.vue')\r\n-const About =import('../view/home/about.vue')\r\n+const Title = import('../view/home/title.vue')\r\n+const About = import('../view/home/about.vue')\r\n \r\n // 2. 定义一些路由\r\n // 每个路由都需要映射到一个组件。\r\n // 我们后面再讨论嵌套路由。\r\n const routes = [\r\n-  { path: '/', component: Home },\r\n+  { path: '/', component: Title },\r\n   { path: '/about', component: About },\r\n ]\r\n \r\n // 3. 创建路由实例并传递 `routes` 配置\r\n"
+                },
+                {
+                    "date": 1687858211736,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,19 +7,19 @@\n // 2. 定义一些路由\r\n // 每个路由都需要映射到一个组件。\r\n // 我们后面再讨论嵌套路由。\r\n const routes = [\r\n-  { path: '/', component: Title },\r\n-  { path: '/about', component: About },\r\n+    { path: '/', component: Title },\r\n+    { path: '/about', component: About }\r\n ]\r\n \r\n // 3. 创建路由实例并传递 `routes` 配置\r\n // 你可以在这里输入更多的配置，但我们在这里\r\n // 暂时保持简单\r\n const router = VueRouter.createRouter({\r\n-  // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。\r\n-  history: VueRouter.createWebHashHistory(),\r\n-  routes, // `routes: routes` 的缩写\r\n+    // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。\r\n+    history: VueRouter.createWebHashHistory(),\r\n+    routes // `routes: routes` 的缩写\r\n })\r\n \r\n // 5. 创建并挂载根实例\r\n const app = Vue.createApp({})\r\n@@ -28,5 +28,5 @@\n app.use(router)\r\n \r\n app.mount('#app')\r\n \r\n-// 现在，应用已经启动了！\n\\ No newline at end of file\n+// 现在，应用已经启动了！\r\n"
+                },
+                {
+                    "date": 1687858320659,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import { createRouter } from 'vue-router'\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = import('../view/home/index.vue')\r\n const Title = import('../view/home/title.vue')\r\n"
+                },
+                {
+                    "date": 1687858412914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-import { createRouter } from 'vue-router'\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = import('../view/home/index.vue')\r\n const Title = import('../view/home/title.vue')\r\n"
+                },
+                {
+                    "date": 1687858454955,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import { createRouter } from 'vue-router'\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = import('../view/home/index.vue')\r\n const Title = import('../view/home/title.vue')\r\n@@ -14,19 +15,11 @@\n \r\n // 3. 创建路由实例并传递 `routes` 配置\r\n // 你可以在这里输入更多的配置，但我们在这里\r\n // 暂时保持简单\r\n-const router = VueRouter.createRouter({\r\n+const router = createRouter({\r\n     // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。\r\n     history: VueRouter.createWebHashHistory(),\r\n     routes // `routes: routes` 的缩写\r\n })\r\n \r\n-// 5. 创建并挂载根实例\r\n-const app = Vue.createApp({})\r\n-//确保 _use_ 路由实例使\r\n-//整个应用支持路由。\r\n-app.use(router)\r\n-\r\n-app.mount('#app')\r\n-\r\n-// 现在，应用已经启动了！\r\n+export default router\r\n"
+                },
+                {
+                    "date": 1687858793448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import { createRouter } from 'vue-router'\r\n+import { createRouter, createWebHistory } from 'vue-router'\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = import('../view/home/index.vue')\r\n const Title = import('../view/home/title.vue')\r\n@@ -17,9 +17,9 @@\n // 你可以在这里输入更多的配置，但我们在这里\r\n // 暂时保持简单\r\n const router = createRouter({\r\n     // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。\r\n-    history: VueRouter.createWebHashHistory(),\r\n+    history: createWebHistory(import.meta.env.BASE_URL),\r\n     routes // `routes: routes` 的缩写\r\n })\r\n \r\n export default router\r\n"
+                },
+                {
+                    "date": 1687858916988,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,19 @@\n // 2. 定义一些路由\r\n // 每个路由都需要映射到一个组件。\r\n // 我们后面再讨论嵌套路由。\r\n const routes = [\r\n-    { path: '/', component: Title },\r\n+    {\r\n+        path: '/',\r\n+        component: Title,\r\n+        redirect: '',\r\n+        children: [\r\n+            {\r\n+                path: '/',\r\n+                component: Home\r\n+            }\r\n+        ]\r\n+    },\r\n     { path: '/about', component: About }\r\n ]\r\n \r\n // 3. 创建路由实例并传递 `routes` 配置\r\n"
+                },
+                {
+                    "date": 1687858941196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n import { createRouter, createWebHistory } from 'vue-router'\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n-const Home = import('../view/home/index.vue')\r\n-const Title = import('../view/home/title.vue')\r\n-const About = import('../view/home/about.vue')\r\n+const Home = () => import('../view/home/index.vue')\r\n+const Title = () => import('../view/home/title.vue')\r\n+const About = () => import('../view/home/about.vue')\r\n \r\n // 2. 定义一些路由\r\n // 每个路由都需要映射到一个组件。\r\n // 我们后面再讨论嵌套路由。\r\n"
+                },
+                {
+                    "date": 1687858974058,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,12 @@\n         redirect: '',\r\n         children: [\r\n             {\r\n                 path: '/',\r\n-                component: Home\r\n+                component: Home,\r\n+                meta: {\r\n+                    title: ''\r\n+                }\r\n             }\r\n         ]\r\n     },\r\n     { path: '/about', component: About }\r\n"
+                },
+                {
+                    "date": 1687858984690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n             {\r\n                 path: '/',\r\n                 component: Home,\r\n                 meta: {\r\n-                    title: ''\r\n+                    title: '首页'\r\n                 }\r\n             }\r\n         ]\r\n     },\r\n"
+                },
+                {
+                    "date": 1687858996632,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,12 +11,12 @@\n const routes = [\r\n     {\r\n         path: '/',\r\n         component: Title,\r\n-        redirect: '',\r\n+        redirect: '/home',\r\n         children: [\r\n             {\r\n-                path: '/',\r\n+                path: '/home',\r\n                 component: Home,\r\n                 meta: {\r\n                     title: '首页'\r\n                 }\r\n"
+                },
+                {
+                    "date": 1687859012504,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,10 @@\n             {\r\n                 path: '/home',\r\n                 component: Home,\r\n                 meta: {\r\n-                    title: '首页'\r\n+                    title: '首页',\r\n+                    requiresAuth: false // 不校验用户身份，用户可直接访问的路由\r\n                 }\r\n             }\r\n         ]\r\n     },\r\n"
+                },
+                {
+                    "date": 1687859027043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,13 @@\n                     title: '首页',\r\n                     requiresAuth: false // 不校验用户身份，用户可直接访问的路由\r\n                 }\r\n             }\r\n-        ]\r\n+        ],\r\n+        {\r\n+            path: '/:pathMatch(.*)*', // 找不到指定页面\r\n+            redirect: '/list'\r\n+        }\r\n     },\r\n     { path: '/about', component: About }\r\n ]\r\n \r\n"
+                },
+                {
+                    "date": 1687859042719,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,15 +21,15 @@\n                     title: '首页',\r\n                     requiresAuth: false // 不校验用户身份，用户可直接访问的路由\r\n                 }\r\n             }\r\n-        ],\r\n-        {\r\n-            path: '/:pathMatch(.*)*', // 找不到指定页面\r\n-            redirect: '/list'\r\n-        }\r\n+        ]\r\n     },\r\n-    { path: '/about', component: About }\r\n+    { path: '/about', component: About },\r\n+    {\r\n+        path: '/:pathMatch(.*)*', // 找不到指定页面\r\n+        redirect: '/list'\r\n+    }\r\n ]\r\n \r\n // 3. 创建路由实例并传递 `routes` 配置\r\n // 你可以在这里输入更多的配置，但我们在这里\r\n"
+                },
+                {
+                    "date": 1687859272762,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/home/title.vue')\r\n-const About = () => import('../view/home/about.vue')\r\n+const About = () => import('../view/home/index.vue')\r\n \r\n // 2. 定义一些路由\r\n // 每个路由都需要映射到一个组件。\r\n // 我们后面再讨论嵌套路由。\r\n"
+                },
+                {
+                    "date": 1687859327272,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/home/title.vue')\r\n-const About = () => import('../view/home/index.vue')\r\n+const About = () => import('../view/about/index.vue')\r\n \r\n // 2. 定义一些路由\r\n // 每个路由都需要映射到一个组件。\r\n // 我们后面再讨论嵌套路由。\r\n"
+                },
+                {
+                    "date": 1687859575604,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import { createRouter, createWebHistory } from 'vue-router'\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n-const Title = () => import('../view/home/title.vue')\r\n+const Title = () => import('../view/title/index.vue')\r\n const About = () => import('../view/about/index.vue')\r\n \r\n // 2. 定义一些路由\r\n // 每个路由都需要映射到一个组件。\r\n"
+                },
+                {
+                    "date": 1687859906286,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,8 +30,13 @@\n         redirect: '/list'\r\n     }\r\n ]\r\n \r\n+router.beforeEach((to, from, next) => {\r\n+    if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })\r\n+    else next()\r\n+})\r\n+\r\n // 3. 创建路由实例并传递 `routes` 配置\r\n // 你可以在这里输入更多的配置，但我们在这里\r\n // 暂时保持简单\r\n const router = createRouter({\r\n"
+                },
+                {
+                    "date": 1687859922513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n                 path: '/home',\r\n                 component: Home,\r\n                 meta: {\r\n                     title: '首页',\r\n-                    requiresAuth: false // 不校验用户身份，用户可直接访问的路由\r\n+                    isAuthenticated: false // 不校验用户身份，用户可直接访问的路由\r\n                 }\r\n             }\r\n         ]\r\n     },\r\n@@ -31,9 +31,9 @@\n     }\r\n ]\r\n \r\n router.beforeEach((to, from, next) => {\r\n-    if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })\r\n+    if (!isAuthenticated) next({ name: 'Login' })\r\n     else next()\r\n })\r\n \r\n // 3. 创建路由实例并传递 `routes` 配置\r\n"
+                },
+                {
+                    "date": 1687859996845,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n     }\r\n ]\r\n \r\n router.beforeEach((to, from, next) => {\r\n-    if (!isAuthenticated) next({ name: 'Login' })\r\n+    if (!to.meta.isAuthenticated) next('/')\r\n     else next()\r\n })\r\n \r\n // 3. 创建路由实例并传递 `routes` 配置\r\n"
+                },
+                {
+                    "date": 1687860022297,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n     }\r\n ]\r\n \r\n router.beforeEach((to, from, next) => {\r\n-    if (!to.meta.isAuthenticated) next('/')\r\n+    if (to.meta.isAuthenticated) next('/login')\r\n     else next()\r\n })\r\n \r\n // 3. 创建路由实例并传递 `routes` 配置\r\n"
+                },
+                {
+                    "date": 1687860053016,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/title/index.vue')\r\n const About = () => import('../view/about/index.vue')\r\n+const Login = () => import('../view/account/login.vue')\r\n \r\n // 2. 定义一些路由\r\n // 每个路由都需要映射到一个组件。\r\n // 我们后面再讨论嵌套路由。\r\n@@ -24,8 +25,9 @@\n             }\r\n         ]\r\n     },\r\n     { path: '/about', component: About },\r\n+    { path: '/login', component: Login },\r\n     {\r\n         path: '/:pathMatch(.*)*', // 找不到指定页面\r\n         redirect: '/list'\r\n     }\r\n"
+                },
+                {
+                    "date": 1687860145218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,16 @@\n                 }\r\n             }\r\n         ]\r\n     },\r\n-    { path: '/about', component: About },\r\n+    {\r\n+        path: '/about',\r\n+        component: About,\r\n+        meta: {\r\n+            title: '首页',\r\n+            isAuthenticated: false // 不校验用户身份，用户可直接访问的路由\r\n+        }\r\n+    },\r\n     { path: '/login', component: Login },\r\n     {\r\n         path: '/:pathMatch(.*)*', // 找不到指定页面\r\n         redirect: '/list'\r\n"
+                },
+                {
+                    "date": 1687860153474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,19 +18,18 @@\n             {\r\n                 path: '/home',\r\n                 component: Home,\r\n                 meta: {\r\n-                    title: '首页',\r\n-                    isAuthenticated: false // 不校验用户身份，用户可直接访问的路由\r\n+                    title: '首页'\r\n                 }\r\n             }\r\n         ]\r\n     },\r\n     {\r\n         path: '/about',\r\n         component: About,\r\n         meta: {\r\n-            title: '首页',\r\n+            title: '关于我们',\r\n             isAuthenticated: false // 不校验用户身份，用户可直接访问的路由\r\n         }\r\n     },\r\n     { path: '/login', component: Login },\r\n"
+                },
+                {
+                    "date": 1687860177230,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,17 @@\n             title: '关于我们',\r\n             isAuthenticated: false // 不校验用户身份，用户可直接访问的路由\r\n         }\r\n     },\r\n-    { path: '/login', component: Login },\r\n     {\r\n+        path: '/login',\r\n+        component: Login,\r\n+        meta: {\r\n+            title: '关于我们',\r\n+            isAuthenticated: false // 不校验用户身份，用户可直接访问的路由\r\n+        }\r\n+    },\r\n+    {\r\n         path: '/:pathMatch(.*)*', // 找不到指定页面\r\n         redirect: '/list'\r\n     }\r\n ]\r\n"
+                },
+                {
+                    "date": 1687860249209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,16 +28,16 @@\n         path: '/about',\r\n         component: About,\r\n         meta: {\r\n             title: '关于我们',\r\n-            isAuthenticated: false // 不校验用户身份，用户可直接访问的路由\r\n+            isAuthenticated: true // 不校验用户身份，用户可直接访问的路由\r\n         }\r\n     },\r\n     {\r\n         path: '/login',\r\n         component: Login,\r\n         meta: {\r\n-            title: '关于我们',\r\n+            title: '登录',\r\n             isAuthenticated: false // 不校验用户身份，用户可直接访问的路由\r\n         }\r\n     },\r\n     {\r\n@@ -46,10 +46,13 @@\n     }\r\n ]\r\n \r\n router.beforeEach((to, from, next) => {\r\n-    if (to.meta.isAuthenticated) next('/login')\r\n-    else next()\r\n+    if (!to.meta.isAuthenticated) {\r\n+        next()\r\n+    } else {\r\n+        next()\r\n+    }\r\n })\r\n \r\n // 3. 创建路由实例并传递 `routes` 配置\r\n // 你可以在这里输入更多的配置，但我们在这里\r\n"
+                },
+                {
+                    "date": 1687860347656,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,8 +49,9 @@\n router.beforeEach((to, from, next) => {\r\n     if (!to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n+        // TODO\r\n         next()\r\n     }\r\n })\r\n \r\n"
+                },
+                {
+                    "date": 1687860370331,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,8 +45,17 @@\n         redirect: '/list'\r\n     }\r\n ]\r\n \r\n+// 3. 创建路由实例并传递 `routes` 配置\r\n+// 你可以在这里输入更多的配置，但我们在这里\r\n+// 暂时保持简单\r\n+const router = createRouter({\r\n+    // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。\r\n+    history: createWebHistory(import.meta.env.BASE_URL),\r\n+    routes // `routes: routes` 的缩写\r\n+})\r\n+\r\n router.beforeEach((to, from, next) => {\r\n     if (!to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n@@ -54,14 +63,5 @@\n         next()\r\n     }\r\n })\r\n \r\n-// 3. 创建路由实例并传递 `routes` 配置\r\n-// 你可以在这里输入更多的配置，但我们在这里\r\n-// 暂时保持简单\r\n-const router = createRouter({\r\n-    // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。\r\n-    history: createWebHistory(import.meta.env.BASE_URL),\r\n-    routes // `routes: routes` 的缩写\r\n-})\r\n-\r\n export default router\r\n"
+                },
+                {
+                    "date": 1687860380649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,9 +53,9 @@\n     // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。\r\n     history: createWebHistory(import.meta.env.BASE_URL),\r\n     routes // `routes: routes` 的缩写\r\n })\r\n-\r\n+// 全局前置路由\r\n router.beforeEach((to, from, next) => {\r\n     if (!to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n"
+                },
+                {
+                    "date": 1687860947192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,8 +59,9 @@\n     if (!to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n         // TODO\r\n+        // 需要验证用户身份\r\n         next()\r\n     }\r\n })\r\n \r\n"
+                },
+                {
+                    "date": 1687861681387,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,14 @@\n         next()\r\n     } else {\r\n         // TODO\r\n         // 需要验证用户身份\r\n-        next()\r\n+        const token = localStorage.getItem('AI_TOKEN') || null\r\n+        if (token) {\r\n+            next()\r\n+        } else {\r\n+            next('/login')\r\n+        }\r\n     }\r\n })\r\n \r\n export default router\r\n"
+                },
+                {
+                    "date": 1687861733935,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,9 +61,9 @@\n     } else {\r\n         // TODO\r\n         // 需要验证用户身份\r\n         const token = localStorage.getItem('AI_TOKEN') || null\r\n-        if (token) {\r\n+        if (token && to.name != 'login') {\r\n             next()\r\n         } else {\r\n             next('/login')\r\n         }\r\n"
+                },
+                {
+                    "date": 1687861744847,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,8 +55,9 @@\n     routes // `routes: routes` 的缩写\r\n })\r\n // 全局前置路由\r\n router.beforeEach((to, from, next) => {\r\n+    console.log(to)\r\n     if (!to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n         // TODO\r\n"
+                },
+                {
+                    "date": 1687916811974,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,9 +59,8 @@\n     console.log(to)\r\n     if (!to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n-        // TODO\r\n         // 需要验证用户身份\r\n         const token = localStorage.getItem('AI_TOKEN') || null\r\n         if (token && to.name != 'login') {\r\n             next()\r\n"
+                },
+                {
+                    "date": 1687932412684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n })\r\n // 全局前置路由\r\n router.beforeEach((to, from, next) => {\r\n     console.log(to)\r\n-    if (!to.meta.isAuthenticated) {\r\n+    if (to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n         const token = localStorage.getItem('AI_TOKEN') || null\r\n"
+                },
+                {
+                    "date": 1687932491110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,7 @@\n import { createRouter, createWebHistory } from 'vue-router'\r\n+import { usePersistStore } from '@/store/index.js'\r\n+const storePersist = usePersistStore()\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/title/index.vue')\r\n@@ -56,13 +58,13 @@\n })\r\n // 全局前置路由\r\n router.beforeEach((to, from, next) => {\r\n     console.log(to)\r\n-    if (to.meta.isAuthenticated) {\r\n+    if (!to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n-        const token = localStorage.getItem('AI_TOKEN') || null\r\n+        const token = storePersist.token || null\r\n         if (token && to.name != 'login') {\r\n             next()\r\n         } else {\r\n             next('/login')\r\n"
+                },
+                {
+                    "date": 1687932499046,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { createRouter, createWebHistory } from 'vue-router'\r\n-import { usePersistStore } from '@/store/index.js'\r\n+import { usePersistStore } from '@/stores/index.js'\r\n const storePersist = usePersistStore()\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n"
+                },
+                {
+                    "date": 1687932636650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,8 +63,9 @@\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n         const token = storePersist.token || null\r\n+        console.log(token)\r\n         if (token && to.name != 'login') {\r\n             next()\r\n         } else {\r\n             next('/login')\r\n"
+                },
+                {
+                    "date": 1687933357966,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { createRouter, createWebHistory } from 'vue-router'\r\n-import { usePersistStore } from '@/stores/index.js'\r\n+import { usePersistStore } from '@/stores/personInfo.js'\r\n const storePersist = usePersistStore()\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n"
+                },
+                {
+                    "date": 1687933471349,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,9 @@\n import { createRouter, createWebHistory } from 'vue-router'\r\n+import pinia from '@/store/index'\r\n import { usePersistStore } from '@/stores/personInfo.js'\r\n-const storePersist = usePersistStore()\r\n+let store = usePersistStore(pinia)\r\n+\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/title/index.vue')\r\n@@ -62,9 +64,9 @@\n     if (!to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n-        const token = storePersist.token || null\r\n+        const token = store.token || null\r\n         console.log(token)\r\n         if (token && to.name != 'login') {\r\n             next()\r\n         } else {\r\n"
+                },
+                {
+                    "date": 1687933530458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { createRouter, createWebHistory } from 'vue-router'\r\n-import pinia from '@/store/index'\r\n+import pinia from '@/stores/index'\r\n import { usePersistStore } from '@/stores/personInfo.js'\r\n let store = usePersistStore(pinia)\r\n \r\n // 1. 定义路由组件.\r\n"
+                },
+                {
+                    "date": 1687933792259,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,9 +59,8 @@\n     routes // `routes: routes` 的缩写\r\n })\r\n // 全局前置路由\r\n router.beforeEach((to, from, next) => {\r\n-    console.log(to)\r\n     if (!to.meta.isAuthenticated) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n"
+                },
+                {
+                    "date": 1687933828736,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,9 +59,10 @@\n     routes // `routes: routes` 的缩写\r\n })\r\n // 全局前置路由\r\n router.beforeEach((to, from, next) => {\r\n-    if (!to.meta.isAuthenticated) {\r\n+    console.log(to)\r\n+    if (to.meta.isAuthenticated === false) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n         const token = store.token || null\r\n"
+                },
+                {
+                    "date": 1687933919928,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,8 +64,10 @@\n     if (to.meta.isAuthenticated === false) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n+        console.log(store)\r\n+        return\r\n         const token = store.token || null\r\n         console.log(token)\r\n         if (token && to.name != 'login') {\r\n             next()\r\n"
+                },
+                {
+                    "date": 1687934039538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n import { createRouter, createWebHistory } from 'vue-router'\r\n import pinia from '@/stores/index'\r\n+import { storeToRefs } from 'pinia'\r\n import { usePersistStore } from '@/stores/personInfo.js'\r\n let store = usePersistStore(pinia)\r\n-\r\n+let { token } = storeToRefs(store) // 此时count为响应式的\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/title/index.vue')\r\n@@ -64,9 +65,9 @@\n     if (to.meta.isAuthenticated === false) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n-        console.log(store)\r\n+        console.log(token)\r\n         return\r\n         const token = store.token || null\r\n         console.log(token)\r\n         if (token && to.name != 'login') {\r\n"
+                },
+                {
+                    "date": 1687934236231,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n import { storeToRefs } from 'pinia'\r\n import { usePersistStore } from '@/stores/personInfo.js'\r\n let store = usePersistStore(pinia)\r\n let { token } = storeToRefs(store) // 此时count为响应式的\r\n+\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/title/index.vue')\r\n"
+                },
+                {
+                    "date": 1687934252008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import { storeToRefs } from 'pinia'\r\n import { usePersistStore } from '@/stores/personInfo.js'\r\n let store = usePersistStore(pinia)\r\n let { token } = storeToRefs(store) // 此时count为响应式的\r\n-\r\n+console.log(token)\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/title/index.vue')\r\n@@ -66,9 +66,9 @@\n     if (to.meta.isAuthenticated === false) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n-        console.log(token)\r\n+        // console.log(token)\r\n         return\r\n         const token = store.token || null\r\n         console.log(token)\r\n         if (token && to.name != 'login') {\r\n"
+                },
+                {
+                    "date": 1687934366764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,8 @@\n import { storeToRefs } from 'pinia'\r\n import { usePersistStore } from '@/stores/personInfo.js'\r\n let store = usePersistStore(pinia)\r\n let { token } = storeToRefs(store) // 此时count为响应式的\r\n-console.log(token)\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/title/index.vue')\r\n@@ -66,9 +65,9 @@\n     if (to.meta.isAuthenticated === false) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n-        // console.log(token)\r\n+        console.log(token)\r\n         return\r\n         const token = store.token || null\r\n         console.log(token)\r\n         if (token && to.name != 'login') {\r\n"
+                },
+                {
+                    "date": 1687934431330,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,10 @@\n import pinia from '@/stores/index'\r\n import { storeToRefs } from 'pinia'\r\n import { usePersistStore } from '@/stores/personInfo.js'\r\n let store = usePersistStore(pinia)\r\n-let { token } = storeToRefs(store) // 此时count为响应式的\r\n+console.log(store)\r\n+// let { token } = storeToRefs(store) // 此时count为响应式的\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/title/index.vue')\r\n"
+                },
+                {
+                    "date": 1687934593565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,6 @@\n import { createRouter, createWebHistory } from 'vue-router'\r\n-import pinia from '@/stores/index'\r\n-import { storeToRefs } from 'pinia'\r\n-import { usePersistStore } from '@/stores/personInfo.js'\r\n-let store = usePersistStore(pinia)\r\n-console.log(store)\r\n-// let { token } = storeToRefs(store) // 此时count为响应式的\r\n+\r\n // 1. 定义路由组件.\r\n // 也可以从其他文件导入\r\n const Home = () => import('../view/home/index.vue')\r\n const Title = () => import('../view/title/index.vue')\r\n@@ -66,12 +61,11 @@\n     if (to.meta.isAuthenticated === false) {\r\n         next()\r\n     } else {\r\n         // 需要验证用户身份\r\n+        // console.log(token)\r\n+        const token = sessionStorage.getItem('token') || null\r\n         console.log(token)\r\n-        return\r\n-        const token = store.token || null\r\n-        console.log(token)\r\n         if (token && to.name != 'login') {\r\n             next()\r\n         } else {\r\n             next('/login')\r\n"
+                },
+                {
+                    "date": 1687934756578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n     } else {\r\n         // 需要验证用户身份\r\n         // console.log(token)\r\n         const token = sessionStorage.getItem('token') || null\r\n-        console.log(token)\r\n+        console.log('token', token)\r\n         if (token && to.name != 'login') {\r\n             next()\r\n         } else {\r\n             next('/login')\r\n"
+                }
+            ],
+            "date": 1687857457646,
+            "name": "Commit-0",
+            "content": "// 1. 定义路由组件.\r\n// 也可以从其他文件导入\r\nconst Home = { template: '<div>Home</div>' }\r\nconst About = { template: '<div>About</div>' }\r\n\r\n// 2. 定义一些路由\r\n// 每个路由都需要映射到一个组件。\r\n// 我们后面再讨论嵌套路由。\r\nconst routes = [\r\n  { path: '/', component: Home },\r\n  { path: '/about', component: About },\r\n]\r\n\r\n// 3. 创建路由实例并传递 `routes` 配置\r\n// 你可以在这里输入更多的配置，但我们在这里\r\n// 暂时保持简单\r\nconst router = VueRouter.createRouter({\r\n  // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。\r\n  history: VueRouter.createWebHashHistory(),\r\n  routes, // `routes: routes` 的缩写\r\n})\r\n\r\n// 5. 创建并挂载根实例\r\nconst app = Vue.createApp({})\r\n//确保 _use_ 路由实例使\r\n//整个应用支持路由。\r\napp.use(router)\r\n\r\napp.mount('#app')\r\n\r\n// 现在，应用已经启动了！"
+        }
+    ]
+}

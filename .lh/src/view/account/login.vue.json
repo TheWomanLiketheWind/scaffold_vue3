@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/view/account/login.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1687860073395,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1687932614515,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,10 @@\n <template>登录页面</template>\r\n \r\n-<script>\r\n-export default {}\r\n+<script setup>\r\n+import { usePersistStore } from '@/stores/index.js'\r\n+const storePersist = usePersistStore()\r\n+\r\n+storePersist.setToken('setToken123456****')\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687933871595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <template>登录页面</template>\r\n \r\n <script setup>\r\n-import { usePersistStore } from '@/stores/index.js'\r\n+import { usePersistStore } from '@/stores/personInfo.js'\r\n const storePersist = usePersistStore()\r\n \r\n storePersist.setToken('setToken123456****')\r\n </script>\r\n"
+                },
+                {
+                    "date": 1687934638366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,10 @@\n \r\n <script setup>\r\n import { usePersistStore } from '@/stores/personInfo.js'\r\n const storePersist = usePersistStore()\r\n-\r\n-storePersist.setToken('setToken123456****')\r\n+const token = 'setToken123456****'\r\n+storePersist.setToken(token)\r\n+sessionStorage.setItem('token', token)\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687934652484,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n import { usePersistStore } from '@/stores/personInfo.js'\r\n const storePersist = usePersistStore()\r\n const token = 'setToken123456****'\r\n storePersist.setToken(token)\r\n+// 用于vue-router\r\n sessionStorage.setItem('token', token)\r\n </script>\r\n \r\n <style></style>\r\n"
+                },
+                {
+                    "date": 1687934660432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import { usePersistStore } from '@/stores/personInfo.js'\r\n const storePersist = usePersistStore()\r\n const token = 'setToken123456****'\r\n storePersist.setToken(token)\r\n-// 用于vue-router\r\n+// 用于vue-router 中使用token\r\n sessionStorage.setItem('token', token)\r\n </script>\r\n \r\n <style></style>\r\n"
+                }
+            ],
+            "date": 1687860073395,
+            "name": "Commit-0",
+            "content": "<template>登录页面</template>\r\n\r\n<script>\r\nexport default {}\r\n</script>\r\n\r\n<style></style>\r\n"
+        }
+    ]
+}
